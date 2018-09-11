@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序</title>
+</head>
+<script>
+/*    原理：与冒泡排序类似，只不过选择排序不是通过相邻元素交换而将最小值“冒泡”到顶端，而是从数组第一个元素开始，与后面的的元素进行比较，如果后面的元素都比他大，则不需要交换，如果有比其小的，则两个值相互交换。
+
+    最坏时间复杂度：O(n2)
+
+    平均时间复杂度：O(n2)
+
+    稳定性：稳定
+
+    空间复杂度：O(1)*/
+
+    function selectSort() {
+/* 1.从数组的开头起，将第一个元素和其他所有元素都进行一次比较，选择出最小的元素放在数组的第一个位置。
+
+2.然后再从第二个元素开始，将第二个元素和除第一个之外的所有元素进行一次比较，选择出最小的元素放在数组的第二个位置。
+
+3.对后面的第三，第四……的元素分别重复上面的步骤，知道所有的数据完成排序。*/
+        function selectSort(arr){
+            var minIndex;//定义minIndex变量用于存储每一趟比较时的最小数的下标
+            for(var i=0; i<arr.length; i++){
+                minIndex = i;
+                for(var j=i+1; j<arr.length; j++){
+                    if(arr[minIndex]>arr[j]){
+                        minIndex = j;
+                    }
+                }
+                //每轮比较后若arr[i]不是我们需要的最小那个数，则进行交换
+                if(minIndex!=i){
+                    var temp = arr[i];
+                    arr[i] = arr[minIndex];
+                    arr[minIndex] = temp;
+                }
+            }
+        }
+        //测试
+        var testArr = [35,22,1,56,88,25];
+        selectSort(testArr);
+        alert(testArr); //输出1,22,25,35,56,88
+    }
+</script>
+<body>
+
+</body>
+</html>
