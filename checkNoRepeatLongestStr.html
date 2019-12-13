@@ -1,0 +1,44 @@
+<!--
+给定一个字符串，找出不含有重复字符的 最长子串 的长度。
+
+示例：
+
+给定 `"abcabcbb"` ，没有重复字符的最长子串是 `"abc"` ，那么长度就是3。
+
+给定 `"bbbbb"` ，最长的子串就是 `"b"` ，长度是1。
+
+给定 `"pwwkew"` ，最长子串是 `"wke"` ，长度是3。请注意答案必须是一个 子串 ， `"pwke"` 是 _子序列_ 而不是子串。
+-->
+<html>
+    <head>
+        <script>
+            function longNoRepeatStr(str){
+                var hash={};
+                var start=0;
+                var ans=0;
+                for(var i=0,len=str.length;i<len;i++){
+                    var item=str[i];
+                    if(!hash[item]){
+                        hash[item]=true;
+                    }else{
+                        for(;;){
+                            if(str[start]==item){
+                                start++;
+                                break
+                            }
+                            hash[str[start]]=false;
+                            start++;
+                        }
+                    }
+                    ans = Math.max(ans, i - start + 1);
+                    console.log(hash)
+                }
+                return ans; 
+            }
+            console.log(longNoRepeatStr('abddddcguiouiojkkkiendi'))
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
